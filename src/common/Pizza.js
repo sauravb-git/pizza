@@ -65,7 +65,7 @@ const Pizza = ({ pizza }) => {
           <h1 className="mt-1">
             Price: {pizza.prices[0][varient] * quantity} BD/-
           </h1>
-        </div>
+        </div> 
 
         <div className="m-1 w-100">
           <button onClick={addtocart} className="btn btn-danger">Add To Cart</button>
