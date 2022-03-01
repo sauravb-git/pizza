@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import CheckOut from '../common/CheckOut';
 import { AddToCartAction,RemoveCart } from '../redux/action/cartAction'; 
 
 
@@ -8,7 +9,7 @@ const Cart = () => {
     const cartState = useSelector(state=>state.addToCartReducer)
     const cartItem = cartState.cartItems;
     const dispatch = useDispatch();
-
+    let subtotal = cartItem.reduce((x, item)=> x+item.price , 0)
     return (
         <div>
         <div className="row justify-content-center" style={{ padding: '0', margin: '0', textAlign: 'center' }} >
@@ -50,8 +51,8 @@ const Cart = () => {
             </div>
 
             <div className="col-md-4 text-end">
-                <h2 style={{fontSize: '30px'}}>Subtotal :  /-</h2>
-                 
+                <h2 style={{fontSize: '30px'}}>Subtotal : {subtotal} /-</h2>
+                 <CheckOut subtotal={subtotal} />
             </div>
         </div>
     </div>
