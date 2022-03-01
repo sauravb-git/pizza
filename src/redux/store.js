@@ -6,23 +6,31 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import { getAllPizzasReducer } from  './reducers/pizzaReducers';
 import {addToCartReducer} from './reducers/cartReducer'
+import { loginReducer, registerReducer } from './reducers/userReducer';
 
 
 
 const AllReducers = combineReducers({
      getAllPizzasReducer : getAllPizzasReducer,
-     addToCartReducer: addToCartReducer
+     addToCartReducer: addToCartReducer,
+     registerReducer: registerReducer ,
+     loginReducer : loginReducer
 });
 
  
 const cartItems = localStorage.getItem('cartItems') 
 ? JSON.parse(localStorage.getItem('cartItems')) : [] ;
- 
+
+const currentUser = localStorage.getItem('currentUser') 
+? JSON.parse(localStorage.getItem('currentUser')) : [] ;
  
 const init = {
   addToCartReducer : {
    cartItems : cartItems
-  } 
+  } ,
+  loginReducer : {
+    currentUser : currentUser
+  }
 }
 
 const composeEnhancers = composeWithDevTools({});
