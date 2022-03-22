@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Cart from './screens/Cart';
 import Login from './screens/Login';
 import Register from './screens/Register';
+import Order from './screens/Order';
 
 
 
@@ -22,6 +23,9 @@ function App() {
 
           <Route  path="/login"  ><Login />  </Route> 
           <Route  path="/register"  ><Register />  </Route> 
+        
+          <Route  path="/orders"  > <Order /> </Route> 
+           
         </Switch>
       </Router>
 

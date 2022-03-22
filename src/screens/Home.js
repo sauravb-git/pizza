@@ -6,6 +6,7 @@ import { getAllPizzas } from '../redux/action/pizzaAction';
 import { getAllPizzasReducer } from './../redux/reducers/pizzaReducers';
 import Loading from '../common/Loading.js';
 import Error from '../common/Error.js';
+import Filter from '../common/Filter.js';
 
 function Home() {
   const dispatch = useDispatch();
@@ -19,6 +20,9 @@ function Home() {
  
   return (
     <div>
+       
+       <Filter />
+       
       <div  className="row justify-content-center" 
        style={{ padding: '0', margin: '0', textAlign: 'center' }}  >
         {loading ? (

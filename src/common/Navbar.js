@@ -36,7 +36,7 @@ const Navbar = () => {
                                     <div
                                      className={`dropdown-menu ${openDropdown ? 'show' : ''}`} 
                                       aria-labelledby="dropdownMenuButton">
-                                        <a className="dropdown-item" href="#">Orders</a>
+                                        <a className="dropdown-item" href="/orders">Orders</a>
                                         <a className="dropdown-item" href="#" onClick={()=>{dispatch(logoutAction())}}>Logout</a>
                                     </div>
                                 </div>

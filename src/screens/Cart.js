@@ -9,7 +9,7 @@ const Cart = () => {
     const cartState = useSelector(state=>state.addToCartReducer)
     const cartItem = cartState.cartItems;
     const dispatch = useDispatch();
-    let subtotal = cartItem.reduce((x, item)=> x+item.price , 0)
+    let subtotal = cartItem.reduce((x, item)=> x + item.price , 0)
     return (
         <div>
         <div className="row justify-content-center" style={{ padding: '0', margin: '0', textAlign: 'center' }} >
@@ -40,8 +40,7 @@ const Cart = () => {
                                 <img src={item.image} style={{ height: '80px', width: '80px' }} />
                             </div>
                             <div className='m-1 w-100'>
-                                <i
-                                    onClick={() => dispatch(RemoveCart(item))}
+                                <i onClick={() => dispatch(RemoveCart(item))}
                                     className="fa fa-trash mt-4"
                                     aria-hidden="true"></i>
                             </div>
