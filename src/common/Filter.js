@@ -12,13 +12,13 @@ const Filter = () => {
         <div className='container px-5'>
             <div className="row justify-content-center shadow-lg p-3 mb-5 bg-white rounded">
 
-                    <div className="col-md-3">
+                    <div className="col-md-3 ">
                       <input
                       onChange={(e)=>{setsearchkey(e.target.value)}}
                       value={searchkey}
                        type="text" className="form-control w-100" placeholder="search pizzas"/>
                     </div>
-                    <div className="col-md-3 ">
+                    <div className="col-md-3 mt-2">
                         <select className="form-control w-100 "
                          value={category} onChange={(e)=>setcategory(e.target.value)}
                          >
@@ -27,7 +27,7 @@ const Filter = () => {
                             <option value="nonveg">Non Veg</option>
                         </select>
                     </div>
-                    <div className="col-md-3 ">
+                    <div className="col-md-3 mt-2">
                        <button className='btn btn-danger' 
                          onClick={()=>{dispatch(filterPizzas(searchkey , category))}}    >FILTER</button>
                     </div>

@@ -8,6 +8,7 @@ import Loading from '../common/Loading.js';
 import Error from '../common/Error.js';
 import Filter from '../common/Filter.js';
 
+import Navbar from '../common/Navbar';
 function Home() {
   const dispatch = useDispatch();
   const pizzaState = useSelector((state) => state.getAllPizzasReducer);
@@ -21,6 +22,7 @@ function Home() {
   return (
     <div>
        
+       <Navbar />
        <Filter />
        
       <div  className="row justify-content-center" 
@@ -30,7 +32,7 @@ function Home() {
         ) : error ? <Error error={'Something went Wrong'} /> : (
           pizzas?.map((pizza, i) => {
             return (
-              <div className="col-md-4" key={i}>
+              <div className="col-md-6 col-sm-12 col-lg-4" key={i}>
                 <Pizza pizza={pizza} />
               </div>
             );

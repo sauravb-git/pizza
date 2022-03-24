@@ -4,9 +4,10 @@ import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import thunk from 'redux-thunk';
-import { getAllPizzasReducer } from  './reducers/pizzaReducers';
+import { getAllPizzasReducer,addPizzaReducer,
+  getPizzaByIdReducer,editPizzaReducer } from  './reducers/pizzaReducers';
 import {addToCartReducer} from './reducers/cartReducer'
-import { loginReducer, registerReducer } from './reducers/userReducer'; 
+import { loginReducer, registerReducer,getAllUsersReducer } from './reducers/userReducer'; 
 import { placeOrderReducer,getUserOrdersReducer, getAllOrdersReducer } from './reducers/oderReducer';
 
 
@@ -16,9 +17,14 @@ const AllReducers = combineReducers({
      addToCartReducer: addToCartReducer,
      registerReducer: registerReducer ,
      loginReducer : loginReducer,
+     getAllUsersReducer:getAllUsersReducer,
      placeOrderReducer : placeOrderReducer, 
      getUserOrdersReducer : getUserOrdersReducer,
-     getAllOrdersReducer : getAllOrdersReducer
+     getAllOrdersReducer : getAllOrdersReducer,
+     addPizzaReducer : addPizzaReducer,
+     getPizzaByIdReducer: getPizzaByIdReducer,
+     editPizzaReducer: editPizzaReducer 
+
 });
 
  

@@ -4,6 +4,7 @@ import { getUserOrders } from '../redux/action/oderAction';
 import Loading from './../common/Loading';
 import Error from './../common/Error';
 
+import Navbar from '../common/Navbar';
 
 const Order = () => {
 
@@ -13,13 +14,14 @@ const Order = () => {
  
          dispatch(getUserOrders()); 
      },[]) 
-    const orderState = useSelector((state) => state.getUserOrdersReducer); 
+     const orderState = useSelector((state) => state.getUserOrdersReducer); 
      const {orders,error,loading} = orderState;
     
-     console.log(orderState)
-
+     
     return (
         <div>
+            
+            <Navbar />
             <h2 style={{fontSize:'35px'}}>My Orders</h2>
             <hr/>
             
@@ -27,15 +29,15 @@ const Order = () => {
             <div className="row justify-content-center" style={{ padding: '0', margin: '0', textAlign: 'center' }}>
                 {loading && (<Loading/>)}
                 {error && (<Error error='Something went wrong'/>)}
-                {orders && orders.map(order=>{
-                    return <div className="col-md-8 m-2 p-1" data-aos='fade-down'  style={{backgroundColor:'red' , color:'white'}}>
+                {orders && orders.map((order,i)=>{
+                    return <div key={i}  className="col-md-8 m-2 p-1" data-aos='fade-down'  style={{backgroundColor:'red' , color:'white'}}>
 
                             <div className="flex-container">
                                 <div className='text-left w-100 m-1'>
                                     <h2 style={{fontSize:'25px'}}>Items</h2>
                                     <hr/>
-                                    {order.orderItems.map(item=>{
-                                        return <div>
+                                    {order.orderItems.map((item,i)=>{
+                                        return <div key={i}>
                                             <p>{item.name} [{item.varient}] * {item.quantity} = {item.price}</p>
                                         </div>
                                     })}
@@ -43,7 +45,7 @@ const Order = () => {
                                 <div className='text-left w-100 m-1'>
                                    
                                 <h2 style={{fontSize:'25px'}}>Address</h2>
-                                <hr/>
+                                <hr/> 
                                 <p>Street : {order.shippingAddress.street}</p>
                                 <p>City : {order.shippingAddress.city}</p>
                                 <p>Country : {order.shippingAddress.country}</p>

@@ -6,16 +6,14 @@ import Cart from './screens/Cart';
 import Login from './screens/Login';
 import Register from './screens/Register';
 import Order from './screens/Order';
+import Admin from './screens/Admin/Admin';
 
 
 
 function App() {
  
   return (
-    <div className="App">
-      
-       <Navbar /> 
-
+    <div className="App">  
        <Router>
          <Switch> 
           <Route exact path="/"  > <Home /> </Route> 
@@ -25,11 +23,9 @@ function App() {
           <Route  path="/register"  ><Register />  </Route> 
         
           <Route  path="/orders"  > <Order /> </Route> 
-           
+          <Route  path="/admin"  > <Admin /> </Route>  
         </Switch>
-      </Router>
-
-          
+      </Router>  
     </div>
   );
 }

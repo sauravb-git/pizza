@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import CheckOut from '../common/CheckOut';
 import { AddToCartAction,RemoveCart } from '../redux/action/cartAction'; 
 
+import Navbar from '../common/Navbar';
 
 const Cart = () => {
 
@@ -10,8 +11,12 @@ const Cart = () => {
     const cartItem = cartState.cartItems;
     const dispatch = useDispatch();
     let subtotal = cartItem.reduce((x, item)=> x + item.price , 0)
+
+    
+
     return (
-        <div>
+        <div> 
+         <Navbar />
         <div className="row justify-content-center" style={{ padding: '0', margin: '0', textAlign: 'center' }} >
             <div className="col-md-6">
                 <h2 style={{ fontSize: '30px', marginBottom: '30px' }}>My cart</h2>
@@ -42,7 +47,7 @@ const Cart = () => {
                             <div className='m-1 w-100'>
                                 <i onClick={() => dispatch(RemoveCart(item))}
                                     className="fa fa-trash mt-4"
-                                    aria-hidden="true"></i>
+                                    aria-hidden="true"></i>  
                             </div>
                         </div>
                     })}

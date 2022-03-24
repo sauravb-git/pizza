@@ -2,12 +2,13 @@ import React,{useState,useEffect} from 'react'
 import { useDispatch,useSelector } from 'react-redux';
 import Error from '../common/Error';
 import Loading from '../common/Loading';
-import { loginAction } from '../redux/action/userAction'; 
+import { loginAction } from '../redux/action/userAction';  
+import Navbar from '../common/Navbar';
+import { useHistory ,Link} from 'react-router-dom';
 
-function Login() {
-
-    const dispatch = useDispatch()
-
+function Login() { 
+    const history = useHistory() 
+    const dispatch = useDispatch() 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     
@@ -19,30 +20,28 @@ function Login() {
         const user = {
             email,
             password
-        }
-        dispatch(loginAction(user)) 
+        } 
+        dispatch(loginAction(user,history)) 
     }
      
     useEffect(() =>{
        if(localStorage.getItem('currentUser')){
-          window.location.href = '/'
+        history.push('/')
        }
     },[])
 
 
     return (
         <div>
+            
+            <Navbar />
             <div className="row justify-content-center mt-5"  style={{ padding: '0', margin: '0', textAlign: 'center' }}>
                 <div className="col-md-5 mt-5 text-start shadow p-3 mb-5 bg-white rounded">
-                    <h2 className="text-center m-2" style={{ fontSize: '35px' }}>Login</h2>
-                    {loading &&
-                        <Loading />
-                    }
-                    {error &&
-                        <Error error="Invalid credentials" />
-                    }
-                     
+          
+                   { loading ?   <Loading /> :  
                     <div>
+                         <h2 className="text-center m-2" style={{ fontSize: '35px' }}>Login</h2>
+                         {error &&  <Error error="Invalid credentials" />  }
                         <input
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
@@ -57,9 +56,10 @@ function Login() {
                         <button
                          onClick={login} 
                          className="btn mt-3 mb-3">Login</button>
-                        <br/>
-                        <a style={{color: 'black'}} href="/register">Click here to register</a>
-                    </div>
+                        <br/> 
+                        <Link style={{ color: 'black' }} to="/register" >Click here to register</Link> 
+                    </div> 
+                   }  
                 </div>
             </div>
         </div>
