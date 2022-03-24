@@ -43,7 +43,7 @@ function CheckOut({subtotal}) {
                 <StripeCheckout
                  amount={subtotal * 100}
                  shippingAddress
-                 stripeKey='pk_test_51KYU3PC86U4zuuJvYOtRZyl28ZymuUW6Gvs1qbEnAN5OPyZ9ftktF2EIuK4fZAZ4QtEgCsul6D82BcqJxPXnCST500AnRy1ABF'
+                 stripeKey='nai'
                  token={tokenHandler}
                  currency='USD'
                 > 
