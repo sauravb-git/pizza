@@ -13,9 +13,7 @@ const Navbar = () => {
     const usersState = useSelector(state=>state.loginReducer)
     const {currentUser} = usersState
   
-
-    const [isNavCollapsed, setIsNavCollapsed] = useState(true); 
-    const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
+ 
     
 
     
@@ -29,11 +27,11 @@ const Navbar = () => {
             <button className="custom-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded={!isNavCollapsed ? true : false} aria-label="Toggle navigation" onClick={handleNavCollapse}>
             <span className="navbar-toggler-icon"></span>
             </button>
-            <div className={`${isNavCollapsed ? 'collapse' : ''} navbar-collapse`} id="navbarsExample09">
+            <div className={isNavCollapsed `} id="navbarsExample09">
                 <ul className="navbar-nav" style={{marginLeft:'auto'}} >
 
                      
-                  { currentUser?.isAdmin === false || currentUser?.isAdmin === true 
+                  { currentUser?.isAdmin 
                             ? (
                                 <div className="dropdown"
                                  onClick={()=>setOpenDropdown(!openDropdown)}
@@ -41,10 +39,9 @@ const Navbar = () => {
                                     <p className="dropdown-toggle nav-link" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i className='fa fa-user-circle'></i>     {currentUser?.name}
                                     </p>
-                                    <div  className={`dropdown-menu ${openDropdown ? 'show' : ''}`} 
+                                    <div  className={`dropdown-menu  `} 
                                       aria-labelledby="dropdownMenuButton">
-                                       { currentUser?.isAdmin === true ?
-                                        <Link className="dropdown-item" to="/admin">Admin Dashbord</Link> : " " }
+                                       
                                         <Link className="dropdown-item" to="/orders">Orders</Link>
                                         <p className="dropdown-item"  
                                         onClick={()=>{dispatch(logoutAction(history))}}> 
