@@ -31,7 +31,7 @@ const Navbar = () => {
                 <ul className="navbar-nav" style={{marginLeft:'auto'}} >
 
                      
-                  { currentUser?.isAdmin 
+                  { currentUser  
                             ? (
                                 <div className="dropdown"
                                  onClick={()=>setOpenDropdown(!openDropdown)}
